@@ -1,5 +1,9 @@
 package com.dabsquared.gitlabjenkins.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * @author Robin Müller
  */
@@ -112,5 +116,66 @@ public class Project {
 
     public void setHttpUrl(String httpUrl) {
         this.httpUrl = httpUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Project project = (Project) o;
+        return new EqualsBuilder()
+                .append(name, project.name)
+                .append(description, project.description)
+                .append(webUrl, project.webUrl)
+                .append(avatarUrl, project.avatarUrl)
+                .append(namespace, project.namespace)
+                .append(visibilityLevel, project.visibilityLevel)
+                .append(pathWithNamespace, project.pathWithNamespace)
+                .append(defaultBranch, project.defaultBranch)
+                .append(homepage, project.homepage)
+                .append(url, project.url)
+                .append(sshUrl, project.sshUrl)
+                .append(httpUrl, project.httpUrl)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(name)
+                .append(description)
+                .append(webUrl)
+                .append(avatarUrl)
+                .append(namespace)
+                .append(visibilityLevel)
+                .append(pathWithNamespace)
+                .append(defaultBranch)
+                .append(homepage)
+                .append(url)
+                .append(sshUrl)
+                .append(httpUrl)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("name", name)
+                .append("description", description)
+                .append("webUrl", webUrl)
+                .append("avatarUrl", avatarUrl)
+                .append("namespace", namespace)
+                .append("visibilityLevel", visibilityLevel)
+                .append("pathWithNamespace", pathWithNamespace)
+                .append("defaultBranch", defaultBranch)
+                .append("homepage", homepage)
+                .append("url", url)
+                .append("sshUrl", sshUrl)
+                .append("httpUrl", httpUrl)
+                .toString();
     }
 }

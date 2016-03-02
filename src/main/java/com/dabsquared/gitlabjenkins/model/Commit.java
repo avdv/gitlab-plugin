@@ -1,5 +1,9 @@
 package com.dabsquared.gitlabjenkins.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.Date;
 import java.util.List;
 
@@ -79,5 +83,54 @@ public class Commit {
 
     public void setRemoved(List<String> removed) {
         this.removed = removed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Commit commit = (Commit) o;
+        return new EqualsBuilder()
+                .append(id, commit.id)
+                .append(message, commit.message)
+                .append(timestamp, commit.timestamp)
+                .append(url, commit.url)
+                .append(author, commit.author)
+                .append(added, commit.added)
+                .append(modified, commit.modified)
+                .append(removed, commit.removed)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(message)
+                .append(timestamp)
+                .append(url)
+                .append(author)
+                .append(added)
+                .append(modified)
+                .append(removed)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("message", message)
+                .append("timestamp", timestamp)
+                .append("url", url)
+                .append("author", author)
+                .append("added", added)
+                .append("modified", modified)
+                .append("removed", removed)
+                .toString();
     }
 }

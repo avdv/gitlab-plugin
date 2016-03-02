@@ -1,5 +1,9 @@
 package com.dabsquared.gitlabjenkins.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.List;
 
 /**
@@ -114,5 +118,66 @@ public class PushHook extends WebHook {
 
     public void setTotalCommitsCount(Integer totalCommitsCount) {
         this.totalCommitsCount = totalCommitsCount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        PushHook pushHook = (PushHook) o;
+        return new EqualsBuilder()
+                .append(before, pushHook.before)
+                .append(after, pushHook.after)
+                .append(ref, pushHook.ref)
+                .append(userId, pushHook.userId)
+                .append(userName, pushHook.userName)
+                .append(userEmail, pushHook.userEmail)
+                .append(userAvatar, pushHook.userAvatar)
+                .append(projectId, pushHook.projectId)
+                .append(project, pushHook.project)
+                .append(repository, pushHook.repository)
+                .append(commits, pushHook.commits)
+                .append(totalCommitsCount, pushHook.totalCommitsCount)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(before)
+                .append(after)
+                .append(ref)
+                .append(userId)
+                .append(userName)
+                .append(userEmail)
+                .append(userAvatar)
+                .append(projectId)
+                .append(project)
+                .append(repository)
+                .append(commits)
+                .append(totalCommitsCount)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("before", before)
+                .append("after", after)
+                .append("ref", ref)
+                .append("userId", userId)
+                .append("userName", userName)
+                .append("userEmail", userEmail)
+                .append("userAvatar", userAvatar)
+                .append("projectId", projectId)
+                .append("project", project)
+                .append("repository", repository)
+                .append("commits", commits)
+                .append("totalCommitsCount", totalCommitsCount)
+                .toString();
     }
 }

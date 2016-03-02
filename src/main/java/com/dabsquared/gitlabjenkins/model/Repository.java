@@ -1,5 +1,9 @@
 package com.dabsquared.gitlabjenkins.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * @author Robin Müller
  */
@@ -67,5 +71,51 @@ public class Repository {
 
     public void setVisibilityLevel(Integer visibilityLevel) {
         this.visibilityLevel = visibilityLevel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Repository that = (Repository) o;
+        return new EqualsBuilder()
+                .append(name, that.name)
+                .append(description, that.description)
+                .append(url, that.url)
+                .append(homepage, that.homepage)
+                .append(gitSshUrl, that.gitSshUrl)
+                .append(gitHttpUrl, that.gitHttpUrl)
+                .append(visibilityLevel, that.visibilityLevel)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(name)
+                .append(description)
+                .append(url)
+                .append(homepage)
+                .append(gitSshUrl)
+                .append(gitHttpUrl)
+                .append(visibilityLevel)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("name", name)
+                .append("description", description)
+                .append("url", url)
+                .append("homepage", homepage)
+                .append("gitSshUrl", gitSshUrl)
+                .append("gitHttpUrl", gitHttpUrl)
+                .append("visibilityLevel", visibilityLevel)
+                .toString();
     }
 }

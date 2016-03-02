@@ -1,6 +1,7 @@
 package com.dabsquared.gitlabjenkins.testhelpers;
 
-import com.dabsquared.gitlabjenkins.data.Repository;
+
+import com.dabsquared.gitlabjenkins.model.Repository;
 
 public class RepositoryBuilder {
 

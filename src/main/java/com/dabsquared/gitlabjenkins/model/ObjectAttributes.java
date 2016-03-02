@@ -1,5 +1,9 @@
 package com.dabsquared.gitlabjenkins.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 import java.util.Date;
 
 /**
@@ -24,6 +28,9 @@ public class ObjectAttributes {
     private Project target;
     private Commit lastCommit;
     private String mergeStatus;
+    private String url;
+    private Action action;
+    private boolean workInProgress;
 
     public Integer getId() {
         return id;
@@ -159,5 +166,114 @@ public class ObjectAttributes {
 
     public void setMergeStatus(String mergeStatus) {
         this.mergeStatus = mergeStatus;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    public boolean isWorkInProgress() {
+        return workInProgress;
+    }
+
+    public void setWorkInProgress(boolean workInProgress) {
+        this.workInProgress = workInProgress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ObjectAttributes that = (ObjectAttributes) o;
+        return new EqualsBuilder()
+                .append(workInProgress, that.workInProgress)
+                .append(id, that.id)
+                .append(iid, that.iid)
+                .append(sourceBranch, that.sourceBranch)
+                .append(targetBranch, that.targetBranch)
+                .append(sourceProjectId, that.sourceProjectId)
+                .append(targetProjectId, that.targetProjectId)
+                .append(authorId, that.authorId)
+                .append(assigneeId, that.assigneeId)
+                .append(title, that.title)
+                .append(createdAt, that.createdAt)
+                .append(updatedAt, that.updatedAt)
+                .append(state, that.state)
+                .append(description, that.description)
+                .append(source, that.source)
+                .append(target, that.target)
+                .append(lastCommit, that.lastCommit)
+                .append(mergeStatus, that.mergeStatus)
+                .append(url, that.url)
+                .append(action, that.action)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(iid)
+                .append(sourceBranch)
+                .append(targetBranch)
+                .append(sourceProjectId)
+                .append(targetProjectId)
+                .append(authorId)
+                .append(assigneeId)
+                .append(title)
+                .append(createdAt)
+                .append(updatedAt)
+                .append(state)
+                .append(description)
+                .append(source)
+                .append(target)
+                .append(lastCommit)
+                .append(mergeStatus)
+                .append(url)
+                .append(action)
+                .append(workInProgress)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("id", id)
+                .append("iid", iid)
+                .append("sourceBranch", sourceBranch)
+                .append("targetBranch", targetBranch)
+                .append("sourceProjectId", sourceProjectId)
+                .append("targetProjectId", targetProjectId)
+                .append("authorId", authorId)
+                .append("assigneeId", assigneeId)
+                .append("title", title)
+                .append("createdAt", createdAt)
+                .append("updatedAt", updatedAt)
+                .append("state", state)
+                .append("description", description)
+                .append("source", source)
+                .append("target", target)
+                .append("lastCommit", lastCommit)
+                .append("mergeStatus", mergeStatus)
+                .append("url", url)
+                .append("action", action)
+                .append("workInProgress", workInProgress)
+                .toString();
     }
 }

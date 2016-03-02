@@ -1,7 +1,10 @@
 package com.dabsquared.gitlabjenkins.testhelpers;
 
-import com.dabsquared.gitlabjenkins.data.Commit;
-import com.dabsquared.gitlabjenkins.data.User;
+
+import com.dabsquared.gitlabjenkins.model.Commit;
+import com.dabsquared.gitlabjenkins.model.User;
+
+import java.util.Date;
 
 public class CommitBuilder {
 
@@ -16,7 +19,7 @@ public class CommitBuilder {
 		commit.setAuthor(new User());
 		commit.getAuthor().setName("author name");
 		commit.getAuthor().setEmail("author@example.com");
-		commit.setTimestamp("2015-11-12T07:49:09+11:00");
+		commit.setTimestamp(new Date());
 	}
 
 	public CommitBuilder withCommitSha(String commitSha) {
