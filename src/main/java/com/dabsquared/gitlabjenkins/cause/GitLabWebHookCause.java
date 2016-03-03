@@ -50,25 +50,25 @@ public abstract class GitLabWebHookCause<T extends WebHook> extends SCMTrigger.S
         }
     }
 
-    protected abstract String getBranch();
+    public abstract String getBranch();
 
-    protected abstract String getSourceBranch();
+    public abstract String getSourceBranch();
 
-    protected abstract ActionType getActionType();
+    public abstract ActionType getActionType();
 
-    protected abstract String getUserName();
+    public abstract String getUserName();
 
-    protected abstract String getUserEmail();
+    public abstract String getUserEmail();
 
-    protected abstract String getSourceRepoHomepage();
+    public abstract String getSourceRepoHomepage();
 
-    protected abstract String getSourceRepoName();
+    public abstract String getSourceRepoName();
 
-    protected abstract String getSourceRepoUrl();
+    public abstract String getSourceRepoUrl();
 
-    protected abstract String getSourceRepoSshUrl();
+    public abstract String getSourceRepoSshUrl();
 
-    protected abstract String getSourceRepoHttpUrl();
+    public abstract String getSourceRepoHttpUrl();
 
     public enum  ActionType {
         PUSH, MERGE
