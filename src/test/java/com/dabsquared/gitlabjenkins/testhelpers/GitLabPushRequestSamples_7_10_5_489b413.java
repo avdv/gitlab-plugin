@@ -1,9 +1,8 @@
 package com.dabsquared.gitlabjenkins.testhelpers;
 
-import static com.dabsquared.gitlabjenkins.testhelpers.PushHookBuilder.ZERO_SHA;
-
-import com.dabsquared.gitlabjenkins.GitLabPushRequest;
 import com.dabsquared.gitlabjenkins.model.PushHook;
+
+import static com.dabsquared.gitlabjenkins.testhelpers.PushHookBuilder.ZERO_SHA;
 
 public class GitLabPushRequestSamples_7_10_5_489b413 implements GitLabPushRequestSamples {
 
